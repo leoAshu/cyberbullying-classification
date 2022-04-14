@@ -13,7 +13,7 @@ This is a multi-class classification task which is related to the domain of Natu
 - A CSV file that provides more than 47000 tweets labelled according to the class of cyber-bullying.
 - There are two columns in the dataset:
     - `tweet_text` - contains the tweet
-    - `cyberbullying_type` - contains the cyberbullying class for each tweet (6 classes):
+    - `cyberbullying_type` - contains the corresponding cyberbullying class for each tweet (6 classes):
         - `age`
         - `ethnicity`
         - `gender`
@@ -28,6 +28,6 @@ This is a multi-class classification task which is related to the domain of Natu
 >   
 > These tweets either describe a bullying event or are the offense themselves, therefore explore it to the point where you feel comfortable.
 
-**Members**:
+## Members:
 1. Ashutosh Ojha
 2. Sathvick Reddy Narahari

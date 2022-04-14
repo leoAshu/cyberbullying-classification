@@ -13,16 +13,20 @@ This is a multi-class classification task which is related to the domain of Natu
 - A CSV file that provides more than 47000 tweets labelled according to the class of cyber-bullying.
 - There are two columns in the dataset:
     - `tweet_text` - contains the tweet
-    - `Sentiment` - contains the class labels (6 types):
+    - `cyberbullying_type` - contains the cyberbullying class for each tweet (6 classes):
         - `age`
         - `ethnicity`
         - `gender`
         - `religion`
         - `other_cyberbullying`
         - `not_cyberbullying`
+- Citation:
+    - J. Wang, K. Fu, C.T. Lu, “[SOSNet: A Graph Convolutional Network Approach to Fine-Grained Cyberbullying Detection](https://ieeexplore.ieee.org/document/9378065),” Proceedings of the 2020 IEEE International Conference on Big Data (IEEE BigData 2020), December 10-13, 2020.
+
 
 > Note:
->   These tweets either describe a bullying event or are the offense themselves, therefore explore it to the point where you feel comfortable.
+>   
+> These tweets either describe a bullying event or are the offense themselves, therefore explore it to the point where you feel comfortable.
 
 **Members**:
 1. Ashutosh Ojha

@@ -31,3 +31,4 @@ This is a multi-class classification task which is related to the domain of Natu
 ## Members:
 1. Ashutosh Ojha
 2. Sathvick Reddy Narahari
+3. Shayla Luong

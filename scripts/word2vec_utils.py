@@ -75,13 +75,13 @@ def get_document_matrix(corpus: pd.Series, model_load_path: str) -> pd.DataFrame
     ----------
     corpus : pandas.Series
         Tokenized corpus
-        
+
     model_load_path : str
         Path of the model to be loaded.
 
     Returns
     -------
-    pd.DataFrame
+    pandas.DataFrame
         Word vectors of the model.
 
     """

@@ -4,8 +4,23 @@ from gensim.utils import simple_preprocess
 from gensim.models import Word2Vec
 
 
-def preprocess(corpus: pd.Series) -> pd.Series:
+def tokenize(corpus: pd.Series) -> pd.Series:
+    """Converts each document of a corpus(list of documents) into a list of lowercase tokens using :func:`~gensim.utils.simple_preprocess`.
+    Also checks if null documents are present and replaces them with an empty string('').
 
+    Uses :func:`~pandas.Series.apply` to tokenize each document.
+
+    Parameters
+    ----------
+    corpus : pandas.Series
+        Input corpus or document list.
+
+    Returns
+    -------
+    pd.Series
+        Tokenized corpus with each document tokenized.
+
+    """
     # handle null values if exist
     # replace null value with empty string
     if corpus.isna().sum() > 0:
@@ -58,7 +73,7 @@ def get_document_matrix(corpus: pd.Series, model_load_path: str) -> pd.DataFrame
 
 
 def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: str = '') -> str:
-    corpus: pd.Series = preprocess(corpus)
+    corpus: pd.Series = tokenize(corpus)
     model: Word2Vec = None
 
     # load a word2vec model from path if provided
@@ -81,7 +96,7 @@ def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: 
 
 
 def transform(corpus: pd.Series, model_load_path: str) -> tuple:
-    corpus: pd.Series = preprocess(corpus)
+    corpus: pd.Series = tokenize(corpus)
     document_matrix: pd.DataFrame = None
 
     # extract document matrix

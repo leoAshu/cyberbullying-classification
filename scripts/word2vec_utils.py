@@ -82,7 +82,7 @@ def get_document_matrix(corpus: pd.Series, model_load_path: str) -> pd.DataFrame
     Returns
     -------
     pandas.DataFrame
-        Word vectors of the model.
+        Document matrix representation of the corpus.
 
     """
     model: Word2Vec = None
@@ -129,7 +129,7 @@ def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: 
         internal function parameters and model hyperparameters as key:value pairs.
 
     model_load_path : str (optional)
-        Path of the model to be loaded.
+        Path of a pre-trained model.
 
     Returns
     -------
@@ -160,6 +160,26 @@ def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: 
 
 
 def transform(corpus: pd.Series, model_load_path: str) -> tuple:
+    """
+    Generates document matrix for a given corpus using the trained model.
+
+    Parameters
+    ----------
+    corpus : pandas.Series
+        Input corpus.
+
+    model_load_path : str
+        Path of the trained model.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Document matrix representation of the corpus.
+
+    str
+        Path of the saved model.
+
+    """
     corpus: pd.Series = tokenize(corpus)
     document_matrix: pd.DataFrame = None
 
@@ -170,6 +190,35 @@ def transform(corpus: pd.Series, model_load_path: str) -> tuple:
 
 
 def fit_transform(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: str = '') -> tuple:
+    """
+    Fits or trains a word2vec model. Also generates document matrix for the corpus used for training the model.
+
+    Uses :func:`~fit` to train the model.
+    Uses :func:`~transform` to generate the document matrix.
+
+    Parameters
+    ----------
+    corpus : pandas.Series
+        Input corpus.
+
+    model_save_path : str
+        Path to save the trained model.
+
+    params: dict
+        internal function parameters and model hyperparameters as key:value pairs.
+
+    model_load_path : str (optional)
+        Path of a pre-trained model.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Document matrix representation of the corpus.
+
+    str
+        Path of the saved model.
+
+    """
     # trains a model, saves the model and returns the path of saved model
     fit(corpus, model_save_path, params, model_load_path)
 

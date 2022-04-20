@@ -5,7 +5,8 @@ from gensim.models import Word2Vec
 
 
 def tokenize(corpus: pd.Series) -> pd.Series:
-    """Converts each document of a corpus(list of documents) into a list of lowercase tokens using :func:`~gensim.utils.simple_preprocess`.
+    """
+    Converts each document of a corpus(list of documents) into a list of lowercase tokens using :func:`~gensim.utils.simple_preprocess`.
     Also checks if null documents are present and replaces them with an empty string('').
 
     Uses :func:`~pandas.Series.apply` to tokenize each document.
@@ -33,6 +34,22 @@ def tokenize(corpus: pd.Series) -> pd.Series:
 
 
 def get_word_vectors(model_load_path: str) -> pd.DataFrame:
+    """
+    Loads a word2vec model and extracts the word vectors from the model as pd.DataFrame.
+
+    Uses :func:`~gensim.models.Word2Vec.load` to load the model.
+
+    Parameters
+    ----------
+    model_load_path : str
+        Path of the model to be loaded.
+
+    Returns
+    -------
+    pd.DataFrame
+        Word vectors of the model.
+
+    """
     model: Word2Vec = None
     word_vectors: pd.DataFrame = None
 

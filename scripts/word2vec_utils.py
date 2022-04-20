@@ -18,7 +18,7 @@ def tokenize(corpus: pd.Series) -> pd.Series:
 
     Returns
     -------
-    pd.Series
+    pandas.Series
         Tokenized corpus with each document tokenized.
 
     """
@@ -35,7 +35,7 @@ def tokenize(corpus: pd.Series) -> pd.Series:
 
 def get_word_vectors(model_load_path: str) -> pd.DataFrame:
     """
-    Loads a word2vec model and extracts the word vectors from the model as pd.DataFrame.
+    Loads a word2vec model and extracts the word vectors from the model as pandas.DataFrame.
 
     Uses :func:`~gensim.models.Word2Vec.load` to load the model.
 
@@ -46,7 +46,7 @@ def get_word_vectors(model_load_path: str) -> pd.DataFrame:
 
     Returns
     -------
-    pd.DataFrame
+    pandas.DataFrame
         Word vectors of the model.
 
     """
@@ -66,6 +66,25 @@ def get_word_vectors(model_load_path: str) -> pd.DataFrame:
 
 
 def get_document_matrix(corpus: pd.Series, model_load_path: str) -> pd.DataFrame:
+    """
+    Loads a word2vec model, creates document matrix from model's word vectors.
+
+    Uses :func:`~gensim.models.Word2Vec.load` to load the model.
+
+    Parameters
+    ----------
+    corpus : pandas.Series
+        Tokenized corpus
+        
+    model_load_path : str
+        Path of the model to be loaded.
+
+    Returns
+    -------
+    pd.DataFrame
+        Word vectors of the model.
+
+    """
     model: Word2Vec = None
     document_vectors: list = []
     document_matrix: pd.DataFrame = None

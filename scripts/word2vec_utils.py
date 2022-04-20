@@ -74,7 +74,7 @@ def get_document_matrix(corpus: pd.Series, model_load_path: str) -> pd.DataFrame
     Parameters
     ----------
     corpus : pandas.Series
-        Tokenized corpus
+        Tokenized corpus.
 
     model_load_path : str
         Path of the model to be loaded.
@@ -109,6 +109,34 @@ def get_document_matrix(corpus: pd.Series, model_load_path: str) -> pd.DataFrame
 
 
 def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: str = '') -> str:
+    """
+    Fits or trains a word2vec model.
+
+    Uses :func:`~gensim.models.Word2Vec.load` to load the model.
+    Uses :func:`~gensim.models.Word2Vec.build_vocab` to generate the vocabulary.
+    Uses :func:`~gensim.models.Word2Vec.train` to train the model.
+    Uses :func:`~gensim.models.Word2Vec.save` to save the model to disk.
+
+    Parameters
+    ----------
+    corpus : pandas.Series
+        Input corpus.
+
+    model_save_path : str
+        Path to save the trained model.
+
+    params: dict
+        internal function parameters and model hyperparameters as key:value pairs.
+
+    model_load_path : str (optional)
+        Path of the model to be loaded.
+
+    Returns
+    -------
+    str
+        Path of the saved model.
+
+    """
     corpus: pd.Series = tokenize(corpus)
     model: Word2Vec = None
 

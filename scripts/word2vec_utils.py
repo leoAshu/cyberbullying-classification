@@ -4,33 +4,33 @@ from gensim.utils import simple_preprocess
 from gensim.models import Word2Vec
 
 
-def tokenize(corpus: pd.Series) -> pd.Series:
-    """
-    Converts each document of a corpus(list of documents) into a list of lowercase tokens using :func:`~gensim.utils.simple_preprocess`.
-    Also checks if null documents are present and replaces them with an empty string('').
+# def tokenize(corpus: pd.Series) -> pd.Series:
+#     """
+#     Converts each document of a corpus(list of documents) into a list of lowercase tokens using :func:`~gensim.utils.simple_preprocess`.
+#     Also checks if null documents are present and replaces them with an empty string('').
 
-    Uses :func:`~pandas.Series.apply` to tokenize each document.
+#     Uses :func:`~pandas.Series.apply` to tokenize each document.
 
-    Parameters
-    ----------
-    corpus : pandas.Series
-        Input corpus or document list.
+#     Parameters
+#     ----------
+#     corpus : pandas.Series
+#         Input corpus or document list.
 
-    Returns
-    -------
-    pandas.Series
-        Tokenized corpus with each document tokenized.
+#     Returns
+#     -------
+#     pandas.Series
+#         Tokenized corpus with each document tokenized.
 
-    """
-    # handle null values if exist
-    # replace null value with empty string
-    if corpus.isna().sum() > 0:
-        corpus = corpus.fillna('')
+#     """
+#     # handle null values if exist
+#     # replace null value with empty string
+#     if corpus.isna().sum() > 0:
+#         corpus = corpus.fillna('')
 
-    # tokenize each document
-    corpus = corpus.apply(simple_preprocess)
+#     # tokenize each document
+#     corpus = corpus.apply(simple_preprocess)
 
-    return corpus
+#     return corpus
 
 
 def get_word_vectors(model_load_path: str) -> pd.DataFrame:
@@ -137,7 +137,7 @@ def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: 
         Path of the saved model.
 
     """
-    corpus: pd.Series = tokenize(corpus)
+    # corpus: pd.Series = tokenize(corpus)
     model: Word2Vec = None
 
     # load a word2vec model from path if provided
@@ -180,7 +180,7 @@ def transform(corpus: pd.Series, model_load_path: str) -> tuple:
         Path of the saved model.
 
     """
-    corpus: pd.Series = tokenize(corpus)
+    # corpus: pd.Series = tokenize(corpus)
     document_matrix: pd.DataFrame = None
 
     # extract document matrix

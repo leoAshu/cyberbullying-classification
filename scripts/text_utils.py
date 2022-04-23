@@ -22,7 +22,7 @@ def untokenize_document(document: list) -> str:
     return ' '.join(document)
 
 
-def preprocess_document(document: str) -> list:
+def preprocess_document(document: str) -> str:
     """
     Performs cleaning, preprocessing, tokenization and lemmatization.
 
@@ -39,8 +39,8 @@ def preprocess_document(document: str) -> list:
 
     Returns
     -------
-    list
-        Cleaned and normalized text as a list of tokens.
+    str
+        Cleaned and normalized text.
 
     """
     lemmatizer = WordNetLemmatizer()
@@ -64,6 +64,8 @@ def preprocess_document(document: str) -> list:
 
     # remove 2 or less letter words
     document = [word for word in document if len(word)>2]
+
+    document = ' '.join(document)
 
     return document
 

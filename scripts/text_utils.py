@@ -65,6 +65,7 @@ def preprocess_document(document: str) -> str:
     # remove 2 or less letter words
     document = [word for word in document if len(word)>2]
 
+    # concatenating the tokens into a string
     document = ' '.join(document)
 
     return document

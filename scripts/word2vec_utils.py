@@ -137,9 +137,13 @@ def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: 
         Path of the saved model.
 
     """
-    # corpus: pd.Series = tokenize(corpus)
-    corpus: pd.Series = corpus.apply(simple_preprocess)
     model: Word2Vec = None
+
+    # replace numm values with empty string
+    corpus = corpus.fillna('')
+    
+    # required tokenization using gensim.utils.simple_preprocess
+    corpus = corpus.apply(simple_preprocess)
 
     # load a word2vec model from path if provided
     # else instantiate a model
@@ -181,9 +185,13 @@ def transform(corpus: pd.Series, model_load_path: str) -> tuple:
         Path of the saved model.
 
     """
-    # corpus: pd.Series = tokenize(corpus)
-    corpus: pd.Series = corpus.apply(simple_preprocess)
     document_matrix: pd.DataFrame = None
+
+    # replace numm values with empty string
+    corpus = corpus.fillna('')
+
+    # required tokenization using gensim.utils.simple_preprocess
+    corpus = corpus.apply(simple_preprocess)
 
     # extract document matrix
     document_matrix = get_document_matrix(corpus, model_load_path)

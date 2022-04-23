@@ -138,6 +138,7 @@ def fit(corpus: pd.Series, model_save_path: str, params: dict, model_load_path: 
 
     """
     # corpus: pd.Series = tokenize(corpus)
+    corpus: pd.Series = corpus.apply(simple_preprocess)
     model: Word2Vec = None
 
     # load a word2vec model from path if provided
@@ -181,6 +182,7 @@ def transform(corpus: pd.Series, model_load_path: str) -> tuple:
 
     """
     # corpus: pd.Series = tokenize(corpus)
+    corpus: pd.Series = corpus.apply(simple_preprocess)
     document_matrix: pd.DataFrame = None
 
     # extract document matrix
